@@ -91,6 +91,7 @@ std::vector<std::string> list_entries(const std::vector<std::string>& paths) {
     std::error_code ec;
     for (auto& dir : paths) {
         // if directory exists
+        std::cout << "---------- looking in dir: " << dir << "\n";
         if (std::filesystem::is_directory(dir, ec) && !ec) {
             for (const auto & entry : fs::directory_iterator(dir)) {
                 desktop_paths.emplace_back(entry.path());

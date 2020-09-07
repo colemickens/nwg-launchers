@@ -205,6 +205,7 @@ int main(int argc, char *argv[]) {
     std::size_t hidden = 0;
     for (auto& entry_ : entries) {
         // string path -> DesktopEntry
+        std::cout << "checking: " << entry_ << "\n";
         auto maybe_entry = desktop_entry(std::move(entry_), lang);
         // We need hidden desktop entries!
         //if (!maybe_entry) {
@@ -215,6 +216,9 @@ int main(int argc, char *argv[]) {
         if (entry.no_display) {
             hidden++;
         }
+
+        std::cout << "name: " << entry.name << "\n";
+        std::cout << "exec: " << entry.exec << "\n";
 
         // only add if 'name' and 'exec' not empty
         if (!entry.name.empty() && !entry.exec.empty()) {
